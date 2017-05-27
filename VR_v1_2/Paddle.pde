@@ -5,7 +5,7 @@ class Paddle {
   color trackc;
 
   Paddle(int bigness) {
-    trackc = color(49, 102, 140);
+    trackc = color(70,150,150);
     size = bigness;
     position = new PVector(width/2 - 75, height/2 - 56.25);
   }
@@ -22,6 +22,7 @@ class Paddle {
   }
 
   void color_replace(PImage original, PImage updated) {
+    //if (r>60 && r <140 && g > 140 && g < 160 && b > 140 && b < 160)
     sumX = 0;
     sumY = 0;
     total = 0;

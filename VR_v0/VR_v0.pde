@@ -54,7 +54,7 @@ void color_replace() {
       float g = green(c);
       float b = blue(c); //base color = 30, 200, 145
       float d = sqrt(30-r);
-      if (r>200) {
+      if (r>60 && r <140 && g > 140 && g < 160 && b > 140 && b < 160) {
         set(width-i, j, color(0, 0, 255)) ;
         sumX += i;
         sumY += j;
