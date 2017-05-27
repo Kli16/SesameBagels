@@ -2,24 +2,24 @@ float dx, dy, dz;
 DashedLine right, left;
 
 void setup() {
+  
   size(1280, 720);
   background(255);
-}
-
-void draw() {
-  println("drawing");
   dy = 1;
   dx = 1;
   dz = 5;
   left = new DashedLine(width/2 + 50, height/3, dx, dy);
-  right = new DashedLine(width/2 - 50, height/3, dx, dy);
-  background(255);
+  right = new DashedLine(width/2 - 50, height/3, dx * -1, dy);
+}
+
+void draw() {
+  println("drawing");
   dy += dz;
   dx += dz;
-  for (int i = 0; i < 100; i += 5) {
-    right.DrawDash(right.xStart + i, right.yStart + i, dx, dy);
-    left.DrawDash(left.xStart + i, left.yStart + i, dx, dy);
-  }
+  background(255);
+  right.DrawDash(right.xStart, right.yStart, dx * -1, dy);
+  left.DrawDash(left.xStart, left.yStart, dx, dy);
+  
 }
 
 //float x1 = width/2 - 50;
