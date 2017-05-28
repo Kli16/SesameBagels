@@ -63,6 +63,10 @@ void setup() {
 
 void draw() {
   background(230);
+  
+  stroke(10);
+  line(0,535,width,535);
+  stroke(1);
   PFont font = loadFont("Avenir-Medium-100.vlw");
   textSize(100);
   textFont(font);
@@ -119,7 +123,12 @@ void draw() {
   Zelda.MoveCharacter();
   _player.move(original, updated);
   for (Octos i : _octos) {
-    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 20) && (i.y > 435)) {
+    //if ((abs((i.x + i.temp.width/2) - _player._character.x) < 20) && (i.y > 435)) {
+    //  i._status = false;
+    //  i.a = false;
+    //}
+    if (((_player._character.x > i.x && _player._character.x < i.x + i.temp.width || 
+    _player._character.x + _player._picture.width > i.x && _player._character.x + _player._picture.width < i.x + i.temp.width)) && i.y > 435) {
       i._status = false;
       i.a = false;
     }
