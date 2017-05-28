@@ -146,7 +146,16 @@ void draw() {
     textSize(100);
     textFont(font);
     fill(255, 77, 77);
-    text("GAME OVER", 430, 100);
+    text("GAME OVER", 330, 400);
+    text("GITRUNNER", 350, 100); 
+    font = loadFont("Avenir-Light-24.vlw");
+    textSize(24);  
+    fill(255, 153, 153);
+    text("Kevin Li and Peter Lee", 525, 135); 
+    textSize(24);
+    text("Stuyhacks May 2017", 530, 165); 
+    font = loadFont("Avenir-Light-80.vlw");
+    textSize(40);
   }
 }
 
