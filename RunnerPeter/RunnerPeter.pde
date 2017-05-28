@@ -3,9 +3,20 @@ import processing.video.*;
 Capture cam;
 
 PImage original, updated;
-int red, green, blue;
+int red, green, blue, z;
 float dx, dy, dz;
 DashedLine right, left;
+Player _player;
+Octos Cat;
+Octos Pusheen;
+Octos Spider;
+Octos Adventure;
+Octos Minion;
+ArrayList<Octos> _octos;
+int _score;
+ArrayList<Boolean> _scores;
+boolean a = true;
+boolean b = true;
 
 void setup() {
   size(1280, 720);
@@ -13,11 +24,23 @@ void setup() {
   dy = 1;
   dx = 1;
   dz = 5;
-  left = new DashedLine(width/2 + 50, height/3, dx, dy);
-  right = new DashedLine(width/2 - 50, height/3, dx * -1, dy);
-
+  z = 1;
+  _player = new Player();
   String[] cameras = Capture.list();
-
+  Cat = new Octos("Octocat.png", width/2 - 50, height/3 - 100);
+  Pusheen = new Octos("Octopusheen.png", width/2 - 50, height/3 - 100);
+  Spider = new Octos("Octospider.png", width/2 - 50, height/3 - 100);
+  Adventure = new Octos("Octoadventure.png", width/2 - 50, height/3 - 100);
+  Minion = new Octos("Octominion.png", width/2 - 50, height/3 - 100);
+  _octos = new ArrayList<Octos>();
+  _octos.add(Cat);
+  _octos.add(Pusheen);
+  _octos.add(Spider);
+  _octos.add(Adventure);
+  _octos.add(Minion);
+  _score = 0;
+  _scores = new ArrayList<Boolean>();
+  _scores.add(true);
   if (cameras.length == 0) {
     println("no camera");
     exit();
@@ -33,46 +56,70 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(230);
+  PFont font = loadFont("Avenir-Medium-100.vlw");
+  textSize(100);
+  textFont(font);
+  fill(255, 77, 77);
+  text("PETERRUNNER", 310, 100); 
+  font = loadFont("Avenir-Light-24.vlw");
+  textSize(24);  
+  fill(255, 153, 153);
+  text("Kevin Li and Peter Lee", 525, 135); 
+  textSize(24);
+  text("Stuyhacks May 2017", 530, 165); 
+  font = loadFont("Avenir-Light-80.vlw");
+  textSize(40);
+  fill(255, 77, 77);
+
+  text("SCORE", 140, 200 ); 
+  fill(92, 214, 92);
+  textSize(80);
+  text(_score, 140, 270 ); 
+
+  left = new DashedLine(width/2 + 50, height/3, dx, dy);
+  right = new DashedLine(width/2 - 50, height/3, dx * -1, dy);
   if (cam.available() == true) {
     cam.read();
   }
   original = cam ;
   updated = new PImage (original.width, original.height);
-  show();
   //color_replace() ;
   //image(updated, 0, 0) 
   // The following does the same, and is faster when just drawing the image
   // without any additional resizing, transformations, or tint.
   //set(0, 0, cam);
-  println(red(color(get(mouseX, mouseY))), green(color(get(mouseX, mouseY))), blue(color(get(mouseX, mouseY)))) ;
-}
-
-void show() {
-  for (int i = 0; i < original.width; i++) {
-    for (int j = 0; j < original.height; j ++) {
-      color c = original.get(i, j);
-      float r = red(c);
-      float g = green(c);
-      float b = blue(c); //base color = 30, 200, 145
-      float d = sqrt(30-r);
-      set(width-i, j, color(r, g, b));
+  for (int i = 0; i < 40; i++) {
+    dy += dz;
+    dx += dz;
+    right.DrawDash(right.xStart, right.yStart, dx * -1, dy);
+    left.DrawDash(left.xStart, left.yStart, dx, dy);
+  }
+  dx = 10;
+  dy = 10;
+  Pusheen.MoveCharacter();
+  Cat.MoveCharacter();
+  Spider.MoveCharacter();
+  Adventure.MoveCharacter();
+  Minion.MoveCharacter();
+  _player.move(original, updated);
+  for (Octos i : _octos) {
+    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 15) && (i.y > 375)) {
+      i._status = false;
+      a = false;
+      if (!a == b) {
+        _score++;
+      }
+      b = false;
     }
   }
 }
-
 
 //if (dx == 1 && dy ==1) {
 //  left = new DashedLine(width/2 + 50, height/3, dx, dy);
 //  right = new DashedLine(width/2 - 50, height/3, dx * -1, dy);
 //}
-//dy += dz;
-//dx += dz;
-//background(255);
-//right.DrawDash(right.xStart, right.yStart, dx * -1, dy);
-//left.DrawDash(left.xStart, left.yStart, dx, dy);
-//dx = 10;
-//dy = 10;
+
 //
 //float x1 = width/2 - 50;
 //float x2 = width/2 + 50;
