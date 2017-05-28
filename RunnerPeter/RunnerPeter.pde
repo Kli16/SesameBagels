@@ -12,6 +12,8 @@ Octos Pusheen;
 Octos Spider;
 Octos Adventure;
 Octos Minion;
+Octos Homer;
+Octos Zelda;
 ArrayList<Octos> _octos;
 int _score;
 ArrayList<Boolean> _scores;
@@ -32,12 +34,16 @@ void setup() {
   Spider = new Octos("Octospider.png", width/2 - 50, height/3 - 100);
   Adventure = new Octos("Octoadventure.png", width/2 - 50, height/3 - 100);
   Minion = new Octos("Octominion.png", width/2 - 50, height/3 - 100);
+  Homer = new Octos("Octohomer.png", width/2 - 50, height/3 - 100);
+  Zelda = new Octos("Octozelda.png", width/2 - 50, height/3 - 100);
   _octos = new ArrayList<Octos>();
   _octos.add(Cat);
   _octos.add(Pusheen);
   _octos.add(Spider);
   _octos.add(Adventure);
   _octos.add(Minion);
+  _octos.add(Homer);
+  _octos.add(Zelda);
   _score = 0;
   _scores = new ArrayList<Boolean>();
   _scores.add(true);
@@ -102,6 +108,8 @@ void draw() {
   Spider.MoveCharacter();
   Adventure.MoveCharacter();
   Minion.MoveCharacter();
+  Homer.MoveCharacter();
+  Zelda.MoveCharacter();
   _player.move(original, updated);
   for (Octos i : _octos) {
     if ((abs((i.x + i.temp.width/2) - _player._character.x) < 15) && (i.y > 395)) {
