@@ -17,8 +17,6 @@ Octos Zelda;
 ArrayList<Octos> _octos;
 int _score;
 ArrayList<Boolean> _scores;
-boolean a = true;
-boolean b = true;
 
 void setup() {
   size(1280, 720);
@@ -112,13 +110,24 @@ void draw() {
   Zelda.MoveCharacter();
   _player.move(original, updated);
   for (Octos i : _octos) {
-    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 15) && (i.y > 395)) {
+    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 20) && (i.y > 435)) {
       i._status = false;
-      a = false;
+      i.a = false;
     }
-    if (!a == b) {
+    //for (Octos n : _octos) {
+    //    if (i != n) {
+    //      if ((abs((i.x + i.temp.width/2) - n.x) < 20) && (abs((i.y + i.temp.height/2) - n.y) < 20)) {
+    //        if (i.yV > n.yV) {
+    //          image(i.temp, i.x, i.y);
+    //        } else {
+    //          image(n.temp, n.x, n.y);
+    //        }
+    //      }
+    //    }
+    //  }
+    if (!i.a == i.b) {
       _score++;
-      b = false;
+      i.b = false;
     }
   }
 }

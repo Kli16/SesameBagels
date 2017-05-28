@@ -8,17 +8,17 @@ class Player {
   float sumX, sumY;
   color trackc;
   PImage _picture;
-  
-  Player(){
+
+  Player() {
     _Health = 100;
     _Progress = 0;
     _status = true;
-    _character = new Ball(0,0);
-    trackc = color(70,150,150);
+    _character = new Ball(0, 0);
+    trackc = color(70, 150, 150);
     _picture = loadImage("Player.png");
-    _picture.resize(0,100);
+    _picture.resize(0, 100);
   }
-  
+
   void move(PImage original, PImage updated) {
     //if (r>60 && r <140 && g > 140 && g < 160 && b > 140 && b < 160)
     sumX = 0;
@@ -42,8 +42,7 @@ class Player {
           sumX += i;
           sumY += j;
           total ++;
-        } 
-        else {
+        } else {
           updated.set(width-i, j, color(r1, g1, b1));
         }
       }

@@ -8,6 +8,8 @@ class Octos {
   float y;
   int z;
   boolean _status; //true is alive, false is dead
+  boolean a;
+  boolean b;
 
   Octos(String filename, float xcor, float ycor) {
     real = loadImage(filename);
@@ -19,6 +21,8 @@ class Octos {
     y = ycor;
     z = 50;
     _status = true;
+    a = true;
+    b = true;
   }
 
   void MoveCharacter() {
