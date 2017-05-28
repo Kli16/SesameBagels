@@ -17,6 +17,7 @@ Octos Zelda;
 ArrayList<Octos> _octos;
 int _score;
 ArrayList<Boolean> _scores;
+int _lives;
 
 void setup() {
   size(1280, 720);
@@ -43,6 +44,7 @@ void setup() {
   _octos.add(Homer);
   _octos.add(Zelda);
   _score = 0;
+  _lives = 10;
   _scores = new ArrayList<Boolean>();
   _scores.add(true);
   if (cameras.length == 0) {
@@ -65,7 +67,7 @@ void draw() {
   textSize(100);
   textFont(font);
   fill(255, 77, 77);
-  text("PETERRUNNER", 310, 100); 
+  text("GITRUNNER", 350, 100); 
   font = loadFont("Avenir-Light-24.vlw");
   textSize(24);  
   fill(255, 153, 153);
@@ -80,6 +82,13 @@ void draw() {
   fill(92, 214, 92);
   textSize(80);
   text(_score, 140, 270 ); 
+  textSize(40);
+  fill(255, 77, 77);
+
+  text("LIVES", 1050, 200 ); 
+  fill(92, 214, 92);
+  textSize(80);
+  text(_lives, 1100, 270 ); 
 
   left = new DashedLine(width/2 + 50, height/3, dx, dy);
   right = new DashedLine(width/2 - 50, height/3, dx * -1, dy);
@@ -129,6 +138,15 @@ void draw() {
       _score++;
       i.b = false;
     }
+  }
+  if (_lives == 0) {
+    noLoop();
+    background(230);
+    font = loadFont("Avenir-Medium-100.vlw");
+    textSize(100);
+    textFont(font);
+    fill(255, 77, 77);
+    text("GAME OVER", 430, 100);
   }
 }
 

@@ -45,6 +45,9 @@ class Octos {
       z = 50;
       yV = random(4, 15);
       xV = random(-yV, yV);
+      if (_status) {
+        _lives--;
+      }
       _status = true;
       a = true;
       b = true;
