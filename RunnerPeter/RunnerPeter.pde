@@ -66,6 +66,7 @@ void draw() {
   
   stroke(10);
   line(0,535,width,535);
+  line(0,580,width,580);
   stroke(1);
   PFont font = loadFont("Avenir-Medium-100.vlw");
   textSize(100);
@@ -128,7 +129,7 @@ void draw() {
     //  i.a = false;
     //}
     if (((_player._character.x > i.x && _player._character.x < i.x + i.temp.width || 
-    _player._character.x + _player._picture.width > i.x && _player._character.x + _player._picture.width < i.x + i.temp.width)) && i.y > 435) {
+    _player._character.x + _player._picture.width > i.x && _player._character.x + _player._picture.width < i.x + i.temp.width)) && i.y > 435 && i.y < 480) {
       i._status = false;
       i.a = false;
     }
