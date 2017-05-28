@@ -104,12 +104,12 @@ void draw() {
   Minion.MoveCharacter();
   _player.move(original, updated);
   for (Octos i : _octos) {
-    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 15) && (i.y > 375)) {
+    if ((abs((i.x + i.temp.width/2) - _player._character.x) < 15) && (i.y > 395)) {
       i._status = false;
       a = false;
-      if (!a == b) {
-        _score++;
-      }
+    }
+    if (!a == b) {
+      _score++;
       b = false;
     }
   }
